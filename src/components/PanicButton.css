@@ -1,0 +1,18 @@
+/* Emergency alert button styles are scoped to this component. */
+.panic-wrapper{position:fixed;bottom:2rem;right:2rem;z-index:9999;display:flex;flex-direction:column;align-items:flex-end;gap:.6rem}
+.panic-btn{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.25rem;width:68px;height:68px;border-radius:50%;border:none;background:linear-gradient(135deg,#ff4d6d,#c9184a);color:#fff;font-size:1.6rem;cursor:pointer;animation:panicPulse 2s ease-in-out infinite}
+.panic-label{font-size:.5rem;font-weight:800;letter-spacing:.1em}
+.panic-btn:disabled{cursor:not-allowed}
+.panic-btn.panic-sent{background:linear-gradient(135deg,#2dc653,#1a7a35);animation:none}
+.panic-overlay{position:fixed;inset:0;background:rgba(0,0,0,.75);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;z-index:9998}
+.panic-modal{background:#13132a;border:1px solid rgba(255,77,109,.35);border-radius:20px;padding:1.75rem;width:90%;max-width:420px;max-height:85vh;overflow-y:auto}
+.panic-modal-header{text-align:center;margin-bottom:1.25rem}
+.panic-modal-header h3{color:#ff4d6d}
+.panic-zones{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1rem}
+.panic-zone-btn{display:flex;align-items:center;gap:.6rem;background:rgba(255,255,255,.05);border:1px solid rgba(255,77,109,.2);border-radius:12px;padding:.75rem;cursor:pointer}
+.panic-zone-icon{font-size:1.3rem}.panic-zone-label{font-size:.8rem;color:#e2e2f0}
+.panic-modal-cancel{width:100%;padding:.65rem;border-radius:10px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:#8b8bb5;cursor:pointer}
+.panic-live-status{margin-bottom:.5rem}.panic-status-card{font-size:.75rem;font-weight:700;padding:.5rem .85rem;border-radius:10px;text-align:center}
+.panic-status-waiting{background:rgba(244,162,97,.12);color:#f4a261}.panic-status-dispatched{background:rgba(76,201,240,.12);color:#4cc9f0}.panic-status-resolved{background:rgba(45,198,83,.12);color:#2dc653}
+.panic-btn-active{background:linear-gradient(135deg,#f4a261,#e76f51)!important}
+@keyframes panicPulse{0%{box-shadow:0 0 0 0 rgba(255,77,109,.6)}70%{box-shadow:0 0 0 14px rgba(255,77,109,0)}100%{box-shadow:0 0 0 0 rgba(255,77,109,0)}}
