@@ -9,8 +9,15 @@ function Home() {
 
   useEffect(() => {
     setTimeout(() => setMounted(true), 100);
-    const u = localStorage.getItem('user');
-    if (u) setUser(JSON.parse(u));
+    const storedUser = localStorage.getItem('user');
+    if (storedUser) {
+      try {
+        setUser(JSON.parse(storedUser));
+      } catch (error) {
+        // Clear invalid session data instead of crashing the homepage.
+        localStorage.removeItem('user');
+      }
+    }
   }, []);
 
   const quickLinks = [
@@ -66,7 +73,7 @@ function Home() {
               <h1 className="home-title">Crowd Management<br /><span>System</span></h1>
               <p className="home-subtitle">Manage visitor flow and ensure safety with real-time monitoring and analytics</p>
               <div className="home-btns">
-                <button className="home-btn home-btn-primary" onClick={() => navigate('/registration')}>Register Visit</button>
+                <button className="home-btn home-btn-primary" onClick={() => navigate('/login')}>Register Visit</button>
                 <button className="home-btn home-btn-secondary" onClick={() => navigate('/login')}>Login</button>
               </div>
             </div>
