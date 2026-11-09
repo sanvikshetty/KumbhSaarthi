@@ -1,0 +1,272 @@
+/* ── Registration dark theme ── */
+.registration {
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  padding: 2rem 1.5rem 4rem;
+  transition: background 0.3s ease;
+}
+
+.registration .container { max-width:1100px;margin:0 auto; }
+
+.registration .page-title {
+  font-size: clamp(1.4rem,3vw,2rem);
+  font-weight: 800;
+  background: linear-gradient(135deg,#fff 30%,#7c3aed);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 1.75rem;
+}
+
+.registration-container {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 1.25rem;
+}
+
+.registration-info, .registration-form-card {
+  background: var(--glass);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 1.75rem;
+  backdrop-filter: blur(12px);
+}
+
+.registration-info h2 { font-size:1rem;font-weight:700;color:var(--text);margin-bottom:1rem; }
+.registration-info ul { list-style:none;display:flex;flex-direction:column;gap:.6rem; }
+.registration-info li { font-size:.85rem;color:var(--muted); }
+
+.timing-card {
+  margin-top:1.5rem;padding:1.25rem;
+  background:rgba(124,58,237,.08);border:1px solid rgba(124,58,237,.2);
+  border-radius:14px;
+}
+.timing-card h3 { font-size:.9rem;font-weight:700;color:#a78bfa;margin-bottom:.75rem; }
+.timing-card p  { font-size:.82rem;color:#8b8bb5;margin-bottom:.35rem; }
+.timing-card strong { color:#e2e2f0; }
+
+.registration-form { display:flex;flex-direction:column;gap:1rem; }
+
+.form-group { display:flex;flex-direction:column;gap:.35rem; }
+.form-group label { font-size:.78rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);font-weight:600; }
+
+.form-group input, .form-group select {
+  background: var(--input-bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: .7rem 1rem;
+  color: var(--text) !important;
+  -webkit-text-fill-color: var(--text) !important;
+  font-size: .95rem;
+  transition: border-color .2s;
+  width: 100%;
+}
+.form-group input::placeholder { color: #8b8bb5 !important; opacity: 1; -webkit-text-fill-color: #8b8bb5 !important; }
+.form-group input:focus, .form-group select:focus { outline:none; border-color:#7c3aed; background: var(--input-bg); }
+.form-group select { color: var(--text) !important; -webkit-text-fill-color: var(--text) !important; }
+.form-group select option { background: var(--input-bg); color: var(--text); }
+.form-group input:-webkit-autofill,
+.form-group input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 1000px var(--input-bg) inset !important;
+  -webkit-text-fill-color: var(--text) !important;
+}
+
+.btn-submit {
+  padding:.85rem;border-radius:12px;border:none;
+  background:linear-gradient(135deg,#7c3aed,#4cc9f0);
+  color:#fff;font-size:.95rem;font-weight:700;cursor:pointer;
+  transition:transform .2s,box-shadow .2s;margin-top:.5rem;
+}
+.btn-submit:hover { transform:translateY(-2px);box-shadow:0 8px 24px rgba(124,58,237,.4); }
+
+.message {
+  padding:.85rem 1rem;border-radius:10px;font-size:.85rem;font-weight:600;margin-top:.5rem;
+}
+.message.success { background:rgba(45,198,83,.12);border:1px solid rgba(45,198,83,.3);color:#2dc653; }
+.message.error   { background:rgba(255,77,109,.12);border:1px solid rgba(255,77,109,.3);color:#ff4d6d; }
+
+@media(max-width:768px){
+  .registration-container { grid-template-columns:1fr; }
+}
+
+/* ── QR Success Screen ── */
+.qr-success-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 0;
+}
+
+.qr-success-card {
+  background: var(--glass);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 2.5rem;
+  max-width: 480px;
+  width: 100%;
+  text-align: center;
+  backdrop-filter: blur(12px);
+  animation: qrFadeUp .6s ease forwards;
+}
+
+@keyframes qrFadeUp {
+  from { opacity:0; transform:translateY(24px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+
+.qr-success-icon { font-size: 3rem; margin-bottom: 1rem; }
+
+.qr-success-card h2 {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--text);
+  margin-bottom: .5rem;
+}
+
+.qr-booking-id {
+  font-size: .85rem;
+  color: #8b8bb5;
+  margin-bottom: 1.5rem;
+}
+.qr-booking-id strong { color: #a78bfa; }
+
+.qr-details {
+  background: var(--glass);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.75rem;
+  text-align: left;
+}
+
+.qr-detail-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: .45rem 0;
+  border-bottom: 1px solid rgba(255,255,255,.05);
+  font-size: .85rem;
+}
+.qr-detail-row:last-child { border-bottom: none; }
+.qr-detail-row span  { color: var(--muted); }
+.qr-detail-row strong { color: var(--text); }
+
+.qr-code-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background: #0f0f2a;
+  border-radius: 16px;
+  border: 1px solid rgba(124,58,237,.25);
+  display: inline-block;
+}
+
+.qr-hint {
+  font-size: .78rem;
+  color: #8b8bb5;
+  margin-bottom: 1.75rem;
+  line-height: 1.6;
+}
+
+.qr-actions {
+  display: flex;
+  gap: .75rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn-download-qr {
+  padding: .75rem 1.5rem;
+  border-radius: 12px;
+  border: none;
+  background: linear-gradient(135deg, #7c3aed, #4cc9f0);
+  color: #fff;
+  font-size: .88rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform .2s, box-shadow .2s;
+}
+.btn-download-qr:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(124,58,237,.4); }
+
+.btn-email-qr {
+  padding: .75rem 1.5rem;
+  border-radius: 12px;
+  border: none;
+  background: linear-gradient(135deg, #2dc653, #0077b6);
+  color: #fff;
+  font-size: .88rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform .2s, box-shadow .2s;
+}
+.btn-email-qr:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(45,198,83,.4); }
+.btn-email-qr:disabled { opacity: .6; cursor: not-allowed; }
+
+.btn-new-reg {
+  padding: .75rem 1.5rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.06);
+  color: #e2e2f0;
+  font-size: .88rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background .2s;
+}
+.btn-new-reg:hover { background: rgba(255,255,255,.1); }
+
+.btn-email-qr {
+  padding: .75rem 1.5rem;
+  border-radius: 12px;
+  border: none;
+  background: linear-gradient(135deg, #4cc9f0, #0077b6);
+  color: #fff;
+  font-size: .88rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform .2s, box-shadow .2s;
+}
+.btn-email-qr:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(76,201,240,.4); }
+.btn-email-qr:disabled { opacity: .6; cursor: not-allowed; transform: none; }
+
+.btn-whatsapp {
+  padding: .75rem 1.5rem;
+  border-radius: 12px;
+  border: none;
+  background: linear-gradient(135deg, #25d366, #128c7e);
+  color: #fff;
+  font-size: .88rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform .2s, box-shadow .2s;
+}
+.btn-whatsapp:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(37,211,102,.4); }
+
+/* ── Full Capacity Screen ── */
+.reg-full-screen {
+  max-width: 480px; margin: 4rem auto;
+  background: rgba(255,77,109,.06);
+  border: 1px solid rgba(255,77,109,.25);
+  border-radius: 24px; padding: 3rem 2rem;
+  text-align: center;
+  animation: qrFadeUp .5s ease forwards;
+}
+.reg-full-icon { font-size: 4rem; margin-bottom: 1rem; }
+.reg-full-screen h2 { font-size: 1.5rem; font-weight: 800; color: #ff4d6d; margin-bottom: .75rem; }
+.reg-full-screen p  { font-size: .9rem; color: #c0c0e0; line-height: 1.6; margin-bottom: 1.25rem; }
+.reg-full-screen strong { color: #f4a261; }
+
+.reg-full-stats {
+  display: flex; gap: 1rem; justify-content: center; margin-bottom: 1.5rem;
+}
+.reg-full-stats div {
+  background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.1);
+  border-radius: 14px; padding: 1rem 1.5rem;
+  display: flex; flex-direction: column; gap: .3rem; text-align: center;
+}
+.reg-full-stats span { font-size: .72rem; text-transform: uppercase; letter-spacing: .1em; color: #8b8bb5; }
+.reg-full-stats strong { font-size: 1.8rem; font-weight: 900; color: #ff4d6d; }
+
+.reg-full-hint { font-size: .82rem; color: #8b8bb5; margin-bottom: 1.5rem; }
