@@ -29,8 +29,9 @@ import TokenDisplay from './pages/TokenDisplay';
 import WristbandScanner from './pages/WristbandScanner';
 import './styles/App.css';
 
-function PrivateRoute({ user, adminOnly, visitorOnly, managerUp, children }) {
+function PrivateRoute({ user, adminOnly, visitorOnly, managerUp, ownerOnly, children }) {
   if (!user) return <Navigate to="/login" />;
+  if (ownerOnly && user.role !== 'admin') return <Navigate to="/dashboard" replace />;
   if (adminOnly && user.role === 'visitor') return <Navigate to="/" />;
   if (visitorOnly && user.role !== 'visitor') return <Navigate to="/visitors" />;
   if (managerUp && !['admin','manager'].includes(user.role)) return <Navigate to="/visitors" />;
@@ -141,7 +142,7 @@ function AppContent() {
         <Route path="/notifications" element={<PrivateRoute user={user} adminOnly><Notifications /></PrivateRoute>} />
         <Route path="/profile" element={<PrivateRoute user={user}><Profile /></PrivateRoute>} />
         <Route path="/settings" element={<PrivateRoute user={user}><Settings /></PrivateRoute>} />
-        <Route path="/setup" element={<PrivateRoute user={user} adminOnly><AdminSetup /></PrivateRoute>} />
+        <Route path="/setup" element={<PrivateRoute user={user} ownerOnly><AdminSetup /></PrivateRoute>} />
         <Route path="/qrscanner" element={<PrivateRoute user={user} adminOnly><QRScanner /></PrivateRoute>} />
         <Route path="/my-bookings" element={<PrivateRoute user={user} visitorOnly><MyBookings /></PrivateRoute>} />
         <Route path="/parking" element={<PrivateRoute user={user} visitorOnly><ParkingBooking /></PrivateRoute>} />
