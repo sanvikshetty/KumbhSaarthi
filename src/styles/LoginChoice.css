@@ -1,0 +1,115 @@
+.lc-root {
+  min-height: 100vh;
+  background: #050510;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Background orbs */
+.lc-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: .25;
+  pointer-events: none;
+}
+.lc-orb1 { width: 500px; height: 500px; background: #7c3aed; top: -150px; left: -150px; animation: lcFloat 8s ease-in-out infinite; }
+.lc-orb2 { width: 400px; height: 400px; background: #f4a261; bottom: -100px; right: -100px; animation: lcFloat 10s ease-in-out infinite reverse; }
+.lc-orb3 { width: 300px; height: 300px; background: #4cc9f0; top: 50%; left: 50%; transform: translate(-50%,-50%); animation: lcFloat 6s ease-in-out infinite; }
+@keyframes lcFloat { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-30px)} }
+
+.lc-inner {
+  max-width: 960px; width: 100%;
+  position: relative; z-index: 1;
+}
+
+/* Header */
+.lc-header { text-align: center; margin-bottom: 3rem; }
+.lc-logo {
+  font-size: 4rem; display: block; margin-bottom: 1rem;
+  animation: lcSpin 6s ease-in-out infinite;
+}
+@keyframes lcSpin { 0%,100%{transform:scale(1) rotate(0deg)} 50%{transform:scale(1.1) rotate(5deg)} }
+
+.lc-title {
+  font-size: clamp(2.5rem,6vw,4rem); font-weight: 900;
+  background: linear-gradient(135deg, #fff 20%, #f4a261 50%, #7c3aed);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text; letter-spacing: -.03em; margin-bottom: .5rem;
+}
+.lc-subtitle { font-size: 1rem; color: #8b8bb5; letter-spacing: .1em; text-transform: uppercase; }
+
+/* Cards */
+.lc-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+@media(max-width:680px) { .lc-cards { grid-template-columns: 1fr; } }
+
+.lc-card {
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 24px;
+  padding: 2.5rem 2rem;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: transform .3s, box-shadow .3s, border-color .3s;
+  backdrop-filter: blur(12px);
+}
+.lc-card:hover { transform: translateY(-8px); }
+
+.lc-visitor:hover { border-color: rgba(244,162,97,.5); box-shadow: 0 20px 60px rgba(244,162,97,.15); }
+.lc-admin:hover   { border-color: rgba(124,58,237,.5); box-shadow: 0 20px 60px rgba(124,58,237,.15); }
+
+.lc-card-glow {
+  position: absolute; inset: 0; opacity: 0;
+  transition: opacity .3s; pointer-events: none;
+  border-radius: 24px;
+}
+.lc-glow-visitor { background: radial-gradient(circle at 50% 0%, rgba(244,162,97,.15), transparent 70%); }
+.lc-glow-admin   { background: radial-gradient(circle at 50% 0%, rgba(124,58,237,.15), transparent 70%); }
+.lc-card:hover .lc-card-glow { opacity: 1; }
+
+.lc-card-icon {
+  font-size: 3.5rem; margin-bottom: 1.25rem; display: block;
+  transition: transform .3s;
+}
+.lc-card:hover .lc-card-icon { transform: scale(1.15); }
+
+.lc-card h2 {
+  font-size: 1.6rem; font-weight: 900; color: #e2e2f0;
+  margin-bottom: .6rem;
+}
+.lc-card p { font-size: .9rem; color: #8b8bb5; line-height: 1.6; margin-bottom: 1.5rem; }
+
+.lc-features { list-style: none; display: flex; flex-direction: column; gap: .6rem; margin-bottom: 2rem; }
+.lc-features li { display: flex; align-items: center; gap: .6rem; font-size: .88rem; color: #c0c0e0; }
+.lc-features li span { font-size: .6rem; }
+.lc-visitor .lc-features li span { color: #f4a261; }
+.lc-admin   .lc-features li span { color: #a78bfa; }
+
+.lc-btn {
+  width: 100%; padding: .9rem; border-radius: 12px; border: none;
+  font-size: .95rem; font-weight: 800; cursor: pointer;
+  transition: transform .2s, box-shadow .2s; letter-spacing: .02em;
+}
+.lc-btn-visitor {
+  background: linear-gradient(135deg, #f4a261, #e76f51);
+  color: #fff;
+}
+.lc-btn-visitor:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(244,162,97,.4); }
+
+.lc-btn-admin {
+  background: linear-gradient(135deg, #7c3aed, #4cc9f0);
+  color: #fff;
+}
+.lc-btn-admin:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(124,58,237,.4); }
+
+.lc-footer { text-align: center; font-size: .78rem; color: #6b6b95; }
