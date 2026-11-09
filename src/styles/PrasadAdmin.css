@@ -1,0 +1,84 @@
+.pra-root { min-height:100vh; background:#0a0a1a; color:#e2e2f0; padding:2rem 1.5rem 4rem; }
+.pra-inner { max-width:1200px; margin:0 auto; }
+
+.pra-header { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:2rem; }
+.pra-title {
+  font-size:clamp(1.5rem,3vw,2.2rem); font-weight:900;
+  background:linear-gradient(135deg,#fff 20%,#f4a261);
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; margin-bottom:.25rem;
+}
+.pra-subtitle { font-size:.88rem; color:#8b8bb5; }
+
+.pra-refresh {
+  background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.12);
+  color:#c0c0e0; border-radius:10px; padding:.55rem 1.1rem;
+  font-size:.85rem; cursor:pointer; transition:all .2s;
+}
+.pra-refresh:hover { border-color:#f4a261; color:#f4a261; }
+
+.pra-summary { display:grid; grid-template-columns:repeat(auto-fill,minmax(130px,1fr)); gap:1rem; margin-bottom:1.75rem; }
+.pra-summary-card { border:1px solid; border-radius:14px; padding:1rem; text-align:center; display:flex; flex-direction:column; gap:.25rem; }
+.pra-s-count { font-size:1.8rem; font-weight:900; line-height:1; }
+.pra-s-label { font-size:.7rem; text-transform:uppercase; letter-spacing:.1em; color:#8b8bb5; }
+.pra-revenue { background:rgba(244,162,97,.07) !important; border-color:rgba(244,162,97,.2) !important; }
+.pra-revenue .pra-s-count { color:#f4a261; font-size:1.3rem; }
+
+.pra-controls { display:flex; gap:1rem; align-items:center; flex-wrap:wrap; margin-bottom:1.5rem; }
+.pra-filters { display:flex; gap:.5rem; flex-wrap:wrap; }
+.pra-filter-btn {
+  background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.1);
+  color:#8b8bb5; border-radius:8px; padding:.4rem .85rem;
+  font-size:.78rem; cursor:pointer; transition:all .2s; text-transform:uppercase; letter-spacing:.05em;
+}
+.pra-filter-btn:hover { border-color:#f4a261; color:#f4a261; }
+.pra-filter-active { background:rgba(244,162,97,.12) !important; border-color:#f4a261 !important; color:#f4a261 !important; font-weight:700; }
+
+.pra-search {
+  margin-left:auto; background:#1e1e3a; border:1px solid rgba(255,255,255,.12);
+  border-radius:10px; padding:.55rem 1rem; color:#fff; font-size:.85rem; width:240px;
+}
+.pra-search:focus { outline:none; border-color:#f4a261; }
+.pra-search::placeholder { color:#8b8bb5; }
+
+.pra-table-wrap { overflow-x:auto; border-radius:16px; border:1px solid rgba(255,255,255,.07); }
+.pra-table { width:100%; border-collapse:collapse; font-size:.83rem; }
+.pra-table thead tr { background:rgba(255,255,255,.05); }
+.pra-table th { padding:.85rem 1rem; text-align:left; font-size:.7rem; text-transform:uppercase; letter-spacing:.08em; color:#8b8bb5; font-weight:700; white-space:nowrap; }
+.pra-table td { padding:.85rem 1rem; border-top:1px solid rgba(255,255,255,.05); vertical-align:middle; }
+.pra-table tbody tr:hover { background:rgba(255,255,255,.03); }
+
+.pra-order-id { font-family:monospace; color:#a78bfa; font-size:.82rem; }
+.pra-name  { font-weight:600; color:#e2e2f0; }
+.pra-phone { font-size:.75rem; color:#8b8bb5; margin-top:.15rem; }
+.pra-slot  { font-size:.8rem; color:#c0c0e0; }
+.pra-amount { font-weight:700; color:#2dc653; }
+
+.pra-items { display:flex; flex-wrap:wrap; gap:.3rem; }
+.pra-item-tag {
+  background:rgba(244,162,97,.1); border:1px solid rgba(244,162,97,.25);
+  color:#f4a261; border-radius:6px; padding:.15rem .5rem; font-size:.72rem; font-weight:600;
+}
+
+.pra-status-badge {
+  display:inline-block; font-size:.7rem; font-weight:700;
+  letter-spacing:.06em; text-transform:uppercase;
+  padding:.25rem .7rem; border-radius:99px; border:1px solid;
+}
+
+.pra-pay-badge { display:inline-block; font-size:.75rem; font-weight:600; padding:.2rem .6rem; border-radius:8px; }
+.pra-pay-paid    { background:rgba(45,198,83,.12);  color:#2dc653; }
+.pra-pay-pending { background:rgba(244,162,97,.12); color:#f4a261; }
+
+.pra-actions { display:flex; gap:.4rem; flex-wrap:wrap; }
+.pra-btn { border:none; border-radius:7px; padding:.35rem .75rem; font-size:.75rem; font-weight:700; cursor:pointer; transition:opacity .2s; }
+.pra-btn:disabled { opacity:.5; cursor:not-allowed; }
+.pra-btn-ready     { background:rgba(76,201,240,.15);  color:#4cc9f0; }
+.pra-btn-collected { background:rgba(45,198,83,.15);   color:#2dc653; }
+.pra-btn-cancel    { background:rgba(255,77,109,.12);  color:#ff4d6d; }
+.pra-done      { font-size:.75rem; color:#2dc653; font-weight:700; }
+.pra-cancelled { font-size:.75rem; color:#ff4d6d; font-weight:700; }
+
+.pra-loading { display:flex; flex-direction:column; align-items:center; gap:1rem; padding:4rem; color:#8b8bb5; }
+.pra-spinner { width:36px; height:36px; border:3px solid rgba(255,255,255,.1); border-top-color:#f4a261; border-radius:50%; animation:praSpin .7s linear infinite; }
+@keyframes praSpin { to { transform:rotate(360deg); } }
+.pra-empty { text-align:center; padding:4rem; color:#8b8bb5; font-size:1rem; }
