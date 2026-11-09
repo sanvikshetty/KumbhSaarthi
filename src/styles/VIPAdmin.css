@@ -1,0 +1,209 @@
+.va-root {
+  min-height: 100vh;
+  background: #0a0a1a;
+  color: #e2e2f0;
+  padding: 2rem 1.5rem 4rem;
+}
+
+.va-inner { max-width: 1300px; margin: 0 auto; }
+
+.va-header {
+  display: flex; justify-content: space-between; align-items: flex-start;
+  margin-bottom: 2rem;
+}
+
+.va-title {
+  font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 900;
+  background: linear-gradient(135deg, #fff 20%, #4cc9f0 60%, #7c3aed);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text; margin-bottom: .25rem;
+}
+.va-subtitle { font-size: .88rem; color: #8b8bb5; }
+
+.va-refresh {
+  background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12);
+  color: #c0c0e0; border-radius: 10px; padding: .55rem 1.1rem;
+  font-size: .85rem; cursor: pointer; transition: all .2s;
+}
+.va-refresh:hover { border-color: #4cc9f0; color: #4cc9f0; }
+
+/* Summary */
+.va-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 1rem; margin-bottom: 1.75rem;
+}
+
+.va-summary-card {
+  border-radius: 14px; padding: 1rem 1.25rem;
+  display: flex; flex-direction: column; gap: .25rem;
+  border: 1px solid rgba(255,255,255,.07);
+}
+
+.va-s-count { font-size: 1.8rem; font-weight: 900; line-height: 1; }
+.va-s-label { font-size: .7rem; text-transform: uppercase; letter-spacing: .1em; color: #8b8bb5; }
+
+.va-s-total     { background: rgba(255,255,255,.04); }
+.va-s-total .va-s-count { color: #e2e2f0; }
+
+.va-s-paid      { background: rgba(45,198,83,.07); border-color: rgba(45,198,83,.2); }
+.va-s-paid .va-s-count { color: #2dc653; }
+
+.va-s-entered   { background: rgba(76,201,240,.07); border-color: rgba(76,201,240,.2); }
+.va-s-entered .va-s-count { color: #4cc9f0; }
+
+.va-s-completed { background: rgba(124,58,237,.07); border-color: rgba(124,58,237,.2); }
+.va-s-completed .va-s-count { color: #a78bfa; }
+
+.va-s-cancelled { background: rgba(255,77,109,.07); border-color: rgba(255,77,109,.2); }
+.va-s-cancelled .va-s-count { color: #ff4d6d; }
+
+.va-s-revenue   { background: rgba(244,162,97,.07); border-color: rgba(244,162,97,.2); }
+.va-s-revenue .va-s-count { color: #f4a261; font-size: 1.3rem; }
+
+/* Controls */
+.va-controls { display: flex; flex-direction: column; gap: .75rem; margin-bottom: 1.5rem; }
+
+.va-filters { display: flex; gap: .5rem; flex-wrap: wrap; }
+
+.va-filter-btn {
+  background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.1);
+  color: #8b8bb5; border-radius: 8px; padding: .4rem .85rem;
+  font-size: .78rem; cursor: pointer; transition: all .2s;
+  text-transform: uppercase; letter-spacing: .05em;
+}
+.va-filter-btn:hover { border-color: #4cc9f0; color: #4cc9f0; }
+.va-filter-active { background: rgba(76,201,240,.1) !important; border-color: #4cc9f0 !important; color: #4cc9f0 !important; font-weight: 700; }
+
+.va-search {
+  background: #1e1e3a; border: 1px solid rgba(255,255,255,.12);
+  border-radius: 10px; padding: .55rem 1rem;
+  color: #fff; font-size: .85rem; width: 300px; max-width: 100%;
+}
+.va-search:focus { outline: none; border-color: #4cc9f0; }
+.va-search::placeholder { color: #8b8bb5; }
+
+/* Table */
+.va-table-wrap { overflow-x: auto; border-radius: 16px; border: 1px solid rgba(255,255,255,.07); }
+.va-table { width: 100%; border-collapse: collapse; font-size: .83rem; }
+.va-table thead tr { background: rgba(255,255,255,.05); }
+.va-table th {
+  padding: .85rem 1rem; text-align: left;
+  font-size: .7rem; text-transform: uppercase; letter-spacing: .08em;
+  color: #8b8bb5; font-weight: 700; white-space: nowrap;
+}
+.va-table td { padding: .85rem 1rem; border-top: 1px solid rgba(255,255,255,.05); vertical-align: middle; }
+.va-table tbody tr:hover { background: rgba(255,255,255,.03); }
+
+.va-booking-id { font-family: monospace; color: #a78bfa; font-size: .82rem; }
+.va-visitor-name { font-weight: 600; color: #e2e2f0; }
+.va-visitor-sub { font-size: .75rem; color: #8b8bb5; margin-top: .15rem; }
+.va-amount { font-weight: 700; color: #2dc653; }
+
+.va-plan-badge {
+  display: inline-block; font-size: .75rem; font-weight: 700;
+  padding: .25rem .75rem; border-radius: 99px; border: 1px solid;
+  white-space: nowrap;
+}
+
+.va-entry-badge {
+  display: inline-block; font-size: .7rem; font-weight: 700;
+  letter-spacing: .06em; text-transform: uppercase;
+  padding: .25rem .7rem; border-radius: 99px; border: 1px solid;
+}
+
+.va-pay-badge {
+  display: inline-block; font-size: .75rem; font-weight: 600;
+  padding: .2rem .6rem; border-radius: 8px;
+}
+.va-pay-paid      { background: rgba(45,198,83,.12);  color: #2dc653; }
+.va-pay-pending   { background: rgba(244,162,97,.12); color: #f4a261; }
+.va-pay-cancelled { background: rgba(255,77,109,.12); color: #ff4d6d; }
+
+.va-actions { display: flex; gap: .4rem; flex-wrap: wrap; align-items: center; }
+.va-btn {
+  border: none; border-radius: 7px; padding: .35rem .75rem;
+  font-size: .75rem; font-weight: 700; cursor: pointer; transition: opacity .2s;
+}
+.va-btn:disabled { opacity: .5; cursor: not-allowed; }
+.va-btn-enter    { background: rgba(76,201,240,.15);  color: #4cc9f0; }
+.va-btn-complete { background: rgba(45,198,83,.15);   color: #2dc653; }
+.va-btn-cancel   { background: rgba(255,77,109,.12);  color: #ff4d6d; }
+
+.va-done      { font-size: .75rem; color: #2dc653; font-weight: 700; }
+.va-cancelled { font-size: .75rem; color: #ff4d6d; font-weight: 700; }
+
+.va-loading { display: flex; flex-direction: column; align-items: center; gap: 1rem; padding: 4rem; color: #8b8bb5; }
+.va-spinner {
+  width: 36px; height: 36px; border: 3px solid rgba(255,255,255,.1);
+  border-top-color: #4cc9f0; border-radius: 50%; animation: vaSpin .7s linear infinite;
+}
+@keyframes vaSpin { to { transform: rotate(360deg); } }
+
+.va-empty { text-align: center; padding: 4rem; color: #8b8bb5; font-size: 1rem; }
+
+.va-cancelled-wrap { display: flex; flex-direction: column; gap: .3rem; }
+.va-refund-badge {
+  font-size: .7rem; font-weight: 700;
+  background: rgba(45,198,83,.1); border: 1px solid rgba(45,198,83,.3);
+  color: #2dc653; border-radius: 6px; padding: .2rem .5rem;
+  white-space: nowrap;
+}
+
+/* Modal */
+.va-modal-overlay {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,.7);
+  backdrop-filter: blur(6px);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 2000;
+  animation: vaFadeIn .2s ease;
+}
+@keyframes vaFadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+.va-modal {
+  background: #13132a;
+  border: 1px solid rgba(255,77,109,.3);
+  border-radius: 20px;
+  padding: 2.5rem 2rem;
+  max-width: 420px; width: 90%;
+  text-align: center;
+  animation: vaSlideUp .25s ease;
+}
+@keyframes vaSlideUp { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
+
+.va-modal-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+.va-modal h2 { font-size: 1.3rem; font-weight: 800; color: #e2e2f0; margin-bottom: .5rem; }
+.va-modal p { font-size: .85rem; color: #8b8bb5; margin-bottom: .35rem; }
+.va-modal-name { display: block; font-size: 1rem; color: #f4a261; margin-bottom: 1rem; }
+
+.va-modal-amount {
+  background: rgba(45,198,83,.08);
+  border: 1px solid rgba(45,198,83,.25);
+  border-radius: 12px; padding: .75rem 1rem;
+  font-size: .9rem; color: #c0c0e0;
+  margin-bottom: 1rem;
+}
+.va-modal-amount span { color: #2dc653; font-size: 1.2rem; font-weight: 800; }
+
+.va-modal-note {
+  font-size: .78rem; color: #6b6b95;
+  margin-bottom: 1.5rem; line-height: 1.5;
+}
+
+.va-modal-actions { display: flex; gap: .75rem; }
+.va-modal-btn-cancel {
+  flex: 1; padding: .75rem; border-radius: 10px;
+  background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12);
+  color: #c0c0e0; font-size: .9rem; font-weight: 700; cursor: pointer;
+  transition: background .2s;
+}
+.va-modal-btn-cancel:hover { background: rgba(255,255,255,.1); }
+
+.va-modal-btn-confirm {
+  flex: 1; padding: .75rem; border-radius: 10px;
+  background: linear-gradient(135deg, #ff4d6d, #c9184a);
+  border: none; color: #fff; font-size: .9rem; font-weight: 700;
+  cursor: pointer; transition: transform .2s, box-shadow .2s;
+}
+.va-modal-btn-confirm:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(255,77,109,.4); }
