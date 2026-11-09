@@ -96,11 +96,19 @@ function Navigation({ user, setUser }) {
   );
 }
 
+function readStoredUser() {
+  try {
+    const storedUser = localStorage.getItem('user');
+    return storedUser ? JSON.parse(storedUser) : null;
+  } catch (error) {
+    // A stale or malformed session must not prevent the app from rendering.
+    localStorage.removeItem('user');
+    return null;
+  }
+}
+
 function AppContent() {
-  const [user, setUser] = useState(() => {
-    const u = localStorage.getItem('user');
-    return u ? JSON.parse(u) : null;
-  });
+  const [user, setUser] = useState(readStoredUser);
 
   useEffect(() => {
     const saved = localStorage.getItem('theme') || 'dark';
@@ -133,7 +141,7 @@ function AppContent() {
         <Route path="/notifications" element={<PrivateRoute user={user} adminOnly><Notifications /></PrivateRoute>} />
         <Route path="/profile" element={<PrivateRoute user={user}><Profile /></PrivateRoute>} />
         <Route path="/settings" element={<PrivateRoute user={user}><Settings /></PrivateRoute>} />
-        <Route path="/setup" element={<PrivateRoute user={user}><AdminSetup /></PrivateRoute>} />
+        <Route path="/setup" element={<PrivateRoute user={user} adminOnly><AdminSetup /></PrivateRoute>} />
         <Route path="/qrscanner" element={<PrivateRoute user={user} adminOnly><QRScanner /></PrivateRoute>} />
         <Route path="/my-bookings" element={<PrivateRoute user={user} visitorOnly><MyBookings /></PrivateRoute>} />
         <Route path="/parking" element={<PrivateRoute user={user} visitorOnly><ParkingBooking /></PrivateRoute>} />
