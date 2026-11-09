@@ -1,0 +1,438 @@
+/* ─── Design Tokens ─────────────────────────────────────────────────────────── */
+:root {
+  --db-bg:        #0a0a1a;
+  --db-surface:   #0f0f2a;
+  --db-glass:     rgba(255, 255, 255, 0.04);
+  --db-border:    rgba(255, 255, 255, 0.08);
+  --db-purple:    #7c3aed;
+  --db-cyan:      #4cc9f0;
+  --db-text:      #e2e2f0;
+  --db-muted:     #8b8bb5;
+  --db-radius:    16px;
+  --db-radius-lg: 24px;
+}
+
+/* ─── Root & Background ────────────────────────────────────────────────────── */
+.db-root {
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+  position: relative;
+  overflow-x: hidden;
+  padding-bottom: 3rem;
+  transition: background 0.3s ease;
+}
+
+.db-orb {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(100px);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0;
+  transition: opacity 1.2s ease;
+}
+.db-mounted .db-orb { opacity: 1; }
+
+.db-orb-1 {
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(124,58,237,0.25) 0%, transparent 70%);
+  top: -200px; left: -200px;
+  animation: orbDrift 18s ease-in-out infinite alternate;
+}
+.db-orb-2 {
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(76,201,240,0.18) 0%, transparent 70%);
+  bottom: -100px; right: -100px;
+  animation: orbDrift 22s ease-in-out infinite alternate-reverse;
+}
+.db-orb-3 {
+  width: 300px; height: 300px;
+  background: radial-gradient(circle, rgba(224,64,251,0.14) 0%, transparent 70%);
+  top: 50%; left: 50%;
+  animation: orbDrift 15s ease-in-out infinite alternate;
+}
+
+@keyframes orbDrift {
+  from { transform: translate(0, 0) scale(1); }
+  to   { transform: translate(40px, 30px) scale(1.1); }
+}
+
+/* ─── Inner container ──────────────────────────────────────────────────────── */
+.db-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+/* ─── Header ───────────────────────────────────────────────────────────────── */
+.db-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 1.75rem;
+  opacity: 0;
+  transform: translateY(-16px);
+  animation: slideDown 0.6s ease forwards 0.1s;
+}
+
+.db-eyebrow {
+  display: block;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--db-purple);
+  margin-bottom: 0.25rem;
+}
+
+.db-title {
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  background: linear-gradient(135deg, var(--text) 30%, var(--db-purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0;
+  line-height: 1;
+}
+
+.db-live-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(45, 198, 83, 0.12);
+  border: 1px solid rgba(45, 198, 83, 0.3);
+  padding: 0.4rem 0.9rem;
+  border-radius: 99px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #2dc653;
+  letter-spacing: 0.08em;
+}
+
+.db-live-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: #2dc653;
+  animation: livePulse 1.4s ease-in-out infinite;
+}
+
+.db-last-updated {
+  color: var(--muted);
+  font-weight: 400;
+  font-size: 0.7rem;
+  letter-spacing: 0;
+}
+
+@keyframes livePulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.4; transform: scale(0.7); }
+}
+
+/* ─── Status Banner ────────────────────────────────────────────────────────── */
+.db-status-banner {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  border: 1px solid;
+  border-radius: var(--db-radius);
+  padding: 1rem 1.5rem;
+  margin-bottom: 2rem;
+  opacity: 0;
+  animation: slideDown 0.6s ease forwards 0.2s;
+}
+
+.db-status-icon { font-size: 1.5rem; }
+
+.db-status-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  flex: 1;
+}
+
+.db-status-text strong { font-size: 0.85rem; letter-spacing: 0.1em; }
+.db-status-text span   { font-size: 0.8rem; color: var(--muted); }
+
+.db-capacity-mini {
+  width: 140px; height: 6px;
+  background: var(--border);
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+.db-capacity-mini-fill {
+  height: 100%;
+  border-radius: 99px;
+  transition: width 1s ease;
+}
+
+.db-pulse {
+  animation: slideDown 0.6s ease forwards 0.2s, statusPulse 2.5s ease-in-out infinite;
+}
+
+@keyframes statusPulse {
+  0%, 100% { box-shadow: none; }
+  50%       { box-shadow: 0 0 20px rgba(255,77,109,0.2); }
+}
+
+/* ─── Loading ──────────────────────────────────────────────────────────────── */
+.db-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+}
+
+.db-spinner {
+  width: 18px; height: 18px;
+  border: 2px solid rgba(124,58,237,0.3);
+  border-top-color: var(--db-purple);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ─── Stat Cards Grid ──────────────────────────────────────────────────────── */
+.db-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.db-stat-card {
+  position: relative;
+  background: var(--glass);
+  border: 1px solid var(--border);
+  border-radius: var(--db-radius);
+  padding: 1.25rem 1.25rem 1.25rem 1rem;
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+  overflow: hidden;
+  backdrop-filter: blur(12px);
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  cursor: default;
+  opacity: 0;
+  transform: translateY(16px);
+  animation: fadeUp 0.5s ease forwards;
+}
+
+.db-stat-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--accent);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.3), 0 0 0 1px var(--accent);
+}
+
+.db-stat-accent-bar {
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 100%; height: 3px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+.db-stat-card:hover .db-stat-accent-bar { transform: scaleX(1); }
+
+.db-stat-icon { font-size: 1.5rem; line-height: 1; margin-top: 0.1rem; }
+.db-stat-body { flex: 1; min-width: 0; }
+
+.db-stat-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+  margin: 0 0 0.35rem;
+}
+
+.db-stat-val {
+  font-size: 1.8rem;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  color: var(--accent);
+  margin: 0 0 0.2rem;
+  line-height: 1;
+}
+
+.db-stat-sub {
+  font-size: 0.68rem;
+  color: var(--muted);
+  margin: 0;
+}
+
+/* ─── Charts Layout ────────────────────────────────────────────────────────── */
+.db-charts-row {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.db-chart-card {
+  background: var(--glass);
+  border: 1px solid var(--border);
+  border-radius: var(--db-radius-lg);
+  padding: 1.5rem;
+  backdrop-filter: blur(12px);
+  opacity: 0;
+  animation: fadeUp 0.6s ease forwards 0.35s;
+}
+
+.db-chart-wide { grid-column: 1; }
+
+.db-chart-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+}
+
+.db-chart-header h3 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  margin: 0;
+}
+
+.db-chart-badge {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--db-purple);
+  background: rgba(124,58,237,0.12);
+  border: 1px solid rgba(124,58,237,0.25);
+  padding: 0.2rem 0.55rem;
+  border-radius: 99px;
+}
+
+/* ─── Custom Tooltip ───────────────────────────────────────────────────────── */
+.custom-tooltip {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0.65rem 1rem;
+  font-size: 0.8rem;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+}
+
+.tooltip-label {
+  color: var(--muted);
+  margin-bottom: 0.3rem;
+  font-weight: 600;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* ─── Quick Stats Panel ────────────────────────────────────────────────────── */
+.db-quick-panel { display: flex; flex-direction: column; gap: 0; }
+
+.db-quick-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.db-quick-row {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.6rem 0.75rem;
+  border-radius: 10px;
+  background: var(--glass);
+  border: 1px solid transparent;
+  transition: border-color 0.2s, background 0.2s;
+}
+.db-quick-row:hover {
+  background: var(--surface);
+  border-color: var(--qcolor);
+}
+
+.db-quick-icon { font-size: 1rem; }
+
+.db-quick-label {
+  font-size: 0.78rem;
+  color: var(--muted);
+  flex: 1;
+}
+
+.db-quick-val {
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  min-width: 2.5rem;
+  text-align: right;
+}
+
+/* ─── Capacity Bar ─────────────────────────────────────────────────────────── */
+.db-cap-section {
+  margin-top: auto;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+
+.db-cap-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.78rem;
+  margin-bottom: 0.5rem;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.db-cap-bar {
+  height: 8px;
+  background: var(--border);
+  border-radius: 99px;
+  overflow: hidden;
+  margin-bottom: 0.35rem;
+}
+
+.db-cap-fill {
+  height: 100%;
+  border-radius: 99px;
+  transition: width 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.db-cap-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.65rem;
+  color: var(--muted);
+}
+
+/* ─── Keyframes ────────────────────────────────────────────────────────────── */
+@keyframes fadeUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes slideDown {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── Responsive ───────────────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .db-charts-row { grid-template-columns: 1fr; }
+  .db-chart-wide { grid-column: auto; }
+}
+
+@media (max-width: 600px) {
+  .db-header { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
+  .db-stats-grid { grid-template-columns: 1fr 1fr; }
+  .db-stat-val { font-size: 1.4rem; }
+}
